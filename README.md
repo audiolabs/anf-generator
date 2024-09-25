@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/862362090.svg)](https://zenodo.org/doi/10.5281/zenodo.13838577)
+
 # **Generating coherence-constrained multisensor signals using balanced mixing and spectrally smooth filters**
 
 Project Overview
@@ -67,7 +69,7 @@ Example Code
       sc_type="spherical",
       sample_frequency=16000,
       nfft=1024,
-      )
+   )
 
    # Generate "num_channels" mutually independent input signals of length "duration"
    input_signals = np.random.randn(num_channels, duration * params.sample_frequency)
