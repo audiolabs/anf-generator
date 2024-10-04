@@ -357,7 +357,7 @@ class MixingMatrix:
 
         for _ in range(MaximumTrails):
             # Perform optimization
-            U = MixingMatrix.signVariableExchange(A, newPhases, True)
+            U = MixingMatrix.signVariableExchange(A, newPhases, False)
 
             # Evaluate l1-norm of obtained unitary matrix
             l1 = MixingMatrix.l1norm(U @ A)
@@ -387,7 +387,7 @@ class MixingMatrix:
 
         for _ in range(MaximumTrails):
             # Perform optimization
-            U = MixingMatrix.signVariableExchange(A, newSigns, True)
+            U = MixingMatrix.signVariableExchange(A, newSigns, False)
 
             # Evaluate l1-norm of obtained unitary matrix
             l1 = MixingMatrix.l1norm(U @ A)
@@ -446,10 +446,10 @@ class MixingMatrix:
 
             # Check convergence
             if delta > np.sqrt(np.finfo(float).eps):
-                if not verbose:
+                if verbose:
                     print("Variable exchange optimization did not improve.")
             elif delta > -1e-5:
-                if not verbose:
+                if verbose:
                     print(
                         f"Variable exchange optimization converged within {counter} iterations."
                     )
