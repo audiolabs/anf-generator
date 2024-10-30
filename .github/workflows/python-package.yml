@@ -29,6 +29,11 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install --upgrade setuptools setuptools_scm
         pip install build
+        pip install -r requirements.txt
     - name: Build Package
       run: |
         python -m build
+    - name: Run Tests
+      run: |
+        pip install -e .
+        pytest
