@@ -60,7 +60,7 @@ class MixingMatrix:
                 if k == K // 2:
                     C[:, :, k] = MixingMatrix.balance(C[:, :, k], U_type="orthogonal")
                 C[:, :, k - 1] = MixingMatrix.smooth(C[:, :, k], C[:, :, k - 1])
-                C[:, :, k - 1] = MixingMatrix.balance_perserving_smoothness(
+                C[:, :, k - 1] = MixingMatrix.balance_preserving_smoothness(
                     C[:, :, k - 1]
                 )
             else:
@@ -175,7 +175,7 @@ class MixingMatrix:
         return len(self.coherence_matrix.params.mic_positions)
 
     def __plot_smoothness_balance(self, smooth, smooth_std, bal, bal_std, eval_metrics):
-        # Define labels for ledgend
+        # Define labels for legend
         smoothness_label = (f'{self.decomposition} {self.processing}: \n'
                             f'ε = {eval_metrics["smoothness"]:.1f} dB, '
                             f'β = {eval_metrics["balance"]:.1f} dB')
@@ -210,7 +210,7 @@ class MixingMatrix:
         # Frequency vector in Hz
         Freqs = np.linspace(0, sample_frequency / 2, K2)
 
-        # Procesd the decomposition and processing strings
+        # Process the decomposition and processing strings
         decomposition = self.decomposition
         processing = self.processing
 
@@ -507,7 +507,7 @@ class MixingMatrix:
         return C_smooth
 
     @staticmethod
-    def balance_perserving_smoothness(C):
+    def balance_preserving_smoothness(C):
         """
         Compute balance Cbs = U * C with high l1(U * C) for U UNITARY while
         preserving smoothness (=single iteration of balance.m with closest

@@ -12,7 +12,7 @@ ANF Generator
 
 Python-based multisensor noise signal generator.
 
-Install
+Installation
 -------
 
 .. code-block:: bash
