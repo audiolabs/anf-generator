@@ -18,7 +18,7 @@ class MixingMatrix:
         # Initialization
         M = self.get_num_channels()  # Number of channels
         K = self.get_nfft()  # Number of frequency bins
-        C = np.zeros((M, M, K), dtype=np.complex_)  # STFT mixing matrix
+        C = np.zeros((M, M, K), dtype=np.complex128)  # STFT mixing matrix
 
         # Direct Current component definition for the mixing matrix (fully coherent)
         C[:, :, 0] = np.ones((M, M)) / np.sqrt(M)
