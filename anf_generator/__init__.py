@@ -97,7 +97,7 @@ def estimate_coherence(x, nfft):
     M, K, L = X.shape  # Number of channels, frequencies, and frames
 
     # Compute PSD matrix
-    psd_matrix = np.zeros((M, M, K), dtype=np.complex_)
+    psd_matrix = np.zeros((M, M, K), dtype=np.complex128)
     for l in range(L):
         # Compute instantaneous spectrum for the l-th frame
         Xf = X[:, :, l].T
@@ -109,7 +109,7 @@ def estimate_coherence(x, nfft):
         psd_matrix += XX
 
     # Compute complex coherence matrix
-    CC = np.zeros((M, M, K), dtype=np.complex_)
+    CC = np.zeros((M, M, K), dtype=np.complex128)
     for r in range(M):
         for c in range(M):
             CC[r, c, :] = psd_matrix[r, c, :] / \

@@ -18,7 +18,7 @@ class MixingMatrix:
         # Initialization
         M = self.get_num_channels()  # Number of channels
         K = self.get_nfft()  # Number of frequency bins
-        C = np.zeros((M, M, K), dtype=np.complex_)  # STFT mixing matrix
+        C = np.zeros((M, M, K), dtype=np.complex128)  # STFT mixing matrix
 
         # Direct Current component definition for the mixing matrix (fully coherent)
         C[:, :, 0] = np.ones((M, M)) / np.sqrt(M)
@@ -122,10 +122,10 @@ class MixingMatrix:
         M = self.get_num_channels()  # Number of channels
 
         # Pre-allocate memory
-        c1_std = np.zeros((M, M, K1), dtype=np.complex_)
-        c1 = np.zeros((M, M, K1), dtype=np.complex_)
-        C2_std = np.zeros((M, M, K2), dtype=np.complex_)
-        C2 = np.zeros((M, M, K2), dtype=np.complex_)
+        c1_std = np.zeros((M, M, K1), dtype=np.complex128)
+        c1 = np.zeros((M, M, K1), dtype=np.complex128)
+        C2_std = np.zeros((M, M, K2), dtype=np.complex128)
+        C2 = np.zeros((M, M, K2), dtype=np.complex128)
 
         for p in range(M):
             for q in range(M):
@@ -147,8 +147,8 @@ class MixingMatrix:
         DC2 = CoherenceMatrix.CoherenceMatrix(params2)
 
         # Compute generated coherence with DFT-length K2 as C'*C and nMSE
-        G_std = np.zeros((M, M, K2 // 2 + 1), dtype=np.complex_)
-        G = np.zeros((M, M, K2 // 2 + 1), dtype=np.complex_)
+        G_std = np.zeros((M, M, K2 // 2 + 1), dtype=np.complex128)
+        G = np.zeros((M, M, K2 // 2 + 1), dtype=np.complex128)
         nMSEk_std = np.zeros(K2 // 2 + 1)
         nMSEk = np.zeros(K2 // 2 + 1)
         for k in range(K2 // 2 + 1):
